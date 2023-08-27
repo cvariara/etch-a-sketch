@@ -21,14 +21,11 @@ function genGrid(size) {
     const square = document.createElement("div");
     square.classList.add("grid-square");
     container.appendChild(square);
+
+    square.addEventListener("mouseenter", function () {
+      square.classList.add("shaded");
+    })
   }
 }
 
 updateGrid();
-
-const gridSquares = document.querySelectorAll(".grid-square");
-gridSquares.forEach((gridSquare) => {
-  gridSquare.addEventListener("mouseenter", function () {
-    gridSquare.classList.add("shaded");
-  });
-});
