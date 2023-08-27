@@ -1,14 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
-* {
+*,
+*::before,
+*::after {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 body {
   background-color: rgb(147, 202, 228);
+}
+
+button {
+  background-color: rgb(177, 80, 80);
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+  border-color: rgb(177, 80, 80);
+  border-radius: 2px;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+input[type="range"] {
+  appearance: none;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  background-image: none;
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: rgb(177, 80, 80);
+  cursor: ew-resize;
+  box-shadow: 0 0 2px 0 #555;
+  transition: background .3s ease-in-out;
+}
+
+input[type=range]::-webkit-slider-runnable-track  {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
 }
 
 .page {
@@ -24,6 +66,40 @@ body {
   min-height: 600px;
   max-height: 70%;
   justify-content: space-between;
+  background-color: rgb(219, 98, 98);
+  border: 70px solid rgb(219, 98, 98);
+  border-radius: 15px;
+}
+
+.menu {
+  margin-right: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.erase {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 10px 0;
+}
+
+.grid-range {
+  display: flex;
+  flex-direction: column;
+}
+
+#slider {
+  cursor: pointer;
+
+}
+
+#slider-value {
+  font-weight: 400;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 8px;
 }
 
 .container {
@@ -48,13 +124,4 @@ body {
 
 .shaded {
   background-color: darkgray;
-}
-
-.grid-range {
-  display: flex;
-  flex-direction: column;
-}
-
-.grid-range > label {
-  text-align: center;
 }
