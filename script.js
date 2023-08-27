@@ -1,6 +1,8 @@
 const container = document.querySelector(".grid");
 const slider = document.querySelector('#slider');
-const sliderValue = document.querySelector('#sliderValue');
+const sliderValue = document.querySelector('#slider-value');
+const erase = document.querySelector('.erase');
+const clear = document.querySelector('.clear');
 
 slider.addEventListener('input', updateGrid);
 
@@ -24,6 +26,10 @@ function genGrid(size) {
 
     square.addEventListener("mouseenter", function () {
       square.classList.add("shaded");
+    })
+
+    erase.addEventListener('click', function () {
+      square.classList.remove("shaded");
     })
   }
 }
