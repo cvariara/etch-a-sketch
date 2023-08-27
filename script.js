@@ -1,22 +1,34 @@
-const container = document.querySelector(".container");
+const container = document.querySelector(".grid");
+const slider = document.querySelector('#slider');
+const sliderValue = document.querySelector('#sliderValue');
+
+slider.addEventListener('input', updateGrid);
+
+function updateGrid() {
+  const squaresPerSide = parseInt(slider.value);
+
+  container.innerHTML = '';
+  container.style.gridTemplateColumns = `repeat(${squaresPerSide}, 1fr)`;
+  container.style.gridTemplateRows = `repeat(${squaresPerSide}, 1fr)`;
+
+  genGrid(squaresPerSide * squaresPerSide);
+
+  sliderValue.textContent = `Squares per side: ${squaresPerSide}`;
+}
 
 function genGrid(size) {
   for (let i = 0; i < size; i++) {
-    let row = document.createElement("div");
-    row.className = "row";
-    for (let j = 1; j <= size; j++) {
-      let cell = document.createElement("div");
-      cell.className = "gridsquare";
-      row.appendChild(cell);
-    }
-    container.appendChild(row);
+    const square = document.createElement("div");
+    square.classList.add("grid-square");
+    container.appendChild(square);
   }
 }
-genGrid(16);
 
-const gridDivs = document.querySelectorAll(".gridsquare");
-gridDivs.forEach((gridDiv) => {
-  gridDiv.addEventListener("mouseenter", function () {
-    gridDiv.classList.add("shaded");
+updateGrid();
+
+const gridSquares = document.querySelectorAll(".grid-square");
+gridSquares.forEach((gridSquare) => {
+  gridSquare.addEventListener("mouseenter", function () {
+    gridSquare.classList.add("shaded");
   });
 });
